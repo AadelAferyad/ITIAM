@@ -1,30 +1,25 @@
 <?php
-echo "dsda";
-// Check if the form is submitted
 if (isset($_POST['submit']))
 {
     $id = $_POST["id"];
     $title = $_POST["title"];
     $price_1 = $_POST["price_1"];
     $price_2 = $_POST["price_2"];
-    // Use $_FILES for file uploads
-    $img_name = $_FILES["img"]["name"];  // Assuming you want to store the file name
+    $img_name = $_FILES["img"]["name"];
     $img_tmp = $_FILES["img"]["tmp_name"];
     $folder = "./img/".$img_name;
     $conn = new mysqli("localhost", "haruma", "kjkszpj987", "Test1");
 
-    // Check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // Insert data into the database using prepared statement
     $sql = "INSERT INTO sharshar (id, title, price_1, price_2, img) VALUES (?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sssss", $id, $title, $price_1, $price_2, $img_name);
 
     if ($stmt->execute()) {
-        // Move uploaded file to the desired folder
+
         move_uploaded_file($img_tmp, $folder);
         echo "wooow";
     } else {

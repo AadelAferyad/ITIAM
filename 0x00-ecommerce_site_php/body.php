@@ -15,10 +15,9 @@ while ($data = $result->fetch_assoc())
           <div class='cards_info'>
             <h1>PRODUCT</h1>
             <h1>{$data['title']}</h1>
-            <h4>{$data['price_2']}</h4>
+            <h4>$ {$data['price_2']}</h4>
           </div>
         </div>";
-
 }
 echo ' </div>';
 include ('./top_products.php');
@@ -33,7 +32,7 @@ while ($data_2 = $result_2 ->fetch_assoc())
           <div class='cards_info'>
             <h1>PRODUCT</h1>
             <h1>{$data_2['title']}</h1>
-            <h4>{$data_2['price_2']}</h4>
+            <h4>$ {$data_2['price_2']}</h4>
           </div>
         </div>";
 
